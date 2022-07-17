@@ -1,0 +1,39 @@
+.v-show-content {
+    /* background-color: white !important; */
+}
+
+/** a-model 弹出框底部取消确认按钮样式 */
+.modalSpan{
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    /*  border: 1px red solid; */
+    margin-right: 10px;
+    color: black;
+}
+.modalSpan:hover{
+    background-color: #f8f8f8;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.ant-input{
+    /* width: 220px; */
+}
+
+.page-container{
+    /* position:fixed; */
+    width: 100%;
+    /* height: 100%; */
+    padding: 10px 10px 10px 10px;
+    /* border: 1px red solid; */
+    /* border: 1px red solid; */
+}
+.footer-container{
+    position:fixed;
+    right:0;
+    bottom:0;
+}

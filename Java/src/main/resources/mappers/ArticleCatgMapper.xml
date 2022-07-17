@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdx97.blog.mapper.ArticleCatgMapper">
+
+    <insert id="testInsert">
+        INSERT INTO xdx_article_catg  ( name )  VALUES  ( #{name} )
+    </insert>
+
+    <select id="listByParentId" resultType="com.xdx97.blog.bean.vo.ArticleCatgVO">
+        SELECT
+            id,
+            parent_id,
+            name,
+            status,
+            sort
+        FROM xdx_article_catg
+        WHERE 1 = 1
+        AND parent_id = #{parentId}
+        <if test="query.name != null and query.name != ''">
+            AND name LIKE CONCAT('%',#{query.name},'%')
+        </if>
+        <if test="query != null and query.status != null">
+            AND status = #{query.status.code}
+        </if>
+        ORDER BY sort DESC
+    </select>
+</mapper>

@@ -1,0 +1,30 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /xdx
+
+spring:
+  profiles:
+    active: local
+
+# 开启MyBatis打印日志
+logging:
+  level:
+    com.xdx.mapper: debug
+
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mappers/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.xdx97.blog.bean.entity
+  configuration:
+    # 枚举处理器
+    default-enum-type-handler: com.xdx97.blog.common.handler.EnumTypeHandler
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 设置主键自增
+      id-type: AUTO
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdx97.blog.mapper.MenuMapper">
+
+    <select id="listByParentId" resultType="com.xdx97.blog.bean.vo.MenuVO">
+        SELECT
+            xm1.*,
+            xm2.name AS parentName
+        FROM xdx_menu xm1
+        LEFT JOIN xdx_menu xm2 ON xm1.parent_id = xm2.id
+        WHERE xm1.parent_id = #{parentId}
+        <if test="query != null and query.name != null and query.name != ''">
+            AND xm1.name LIKE CONCAT('%',#{query.name},'%')
+        </if>
+        <if test="query != null and query.status != null">
+            AND xm1.status = #{query.status.code}
+        </if>
+        ORDER BY xm1.sort DESC
+    </select>
+</mapper>

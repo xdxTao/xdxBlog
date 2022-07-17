@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdx97.blog.mapper.RoleMenuRelationMapper">
+
+    <select id="getRoleMenuByRoleId" resultType="com.xdx97.blog.bean.vo.MenuVO">
+        SELECT
+            xrmr.menu_id AS id,
+            xm.name,
+            xm.icon,
+            xm.menu_url,
+            xm.parent_id,
+            xm.sort
+        FROM xdx_role_menu_relation xrmr
+        LEFT JOIN xdx_menu xm ON xrmr.menu_id = xm.id
+        WHERE xrmr.role_id = #{roleId}
+        AND xm.status = 'ENABLE'
+        ORDER BY xm.sort DESC
+    </select>
+</mapper>

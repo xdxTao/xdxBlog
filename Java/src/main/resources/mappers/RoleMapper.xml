@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdx97.blog.mapper.RoleMapper">
+
+    <delete id="deleteRoleMenuByRoleId">
+        DELETE FROM xdx_role_menu_relation WHERE role_id = #{roleId}
+    </delete>
+
+    <insert id="updateRoleMenuByRoleId">
+        INSERT INTO xdx_role_menu_relation
+        (role_id, menu_id, create_by, create_at) VALUES
+        <foreach collection="menuIds" item="item" separator="," >
+            (#{roleId}, #{item}, 1, now())
+        </foreach>
+    </insert>
+
+    <select id="lists" resultType="com.xdx97.blog.bean.vo.RoleVO">
+        SELECT id, name FROM xdx_role
+    </select>
+
+    <select id="menuListByRoleId" resultType="java.lang.Integer">
+        SELECT menu_id FROM xdx_role_menu_relation WHERE role_id = #{roleId}
+    </select>
+</mapper>
