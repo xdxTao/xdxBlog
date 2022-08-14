@@ -3,6 +3,7 @@ import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.common.enums.StatusCodeEnum;
+import com.xdx97.blog.common.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -67,17 +68,21 @@ public class EceptionHandler {
             bean.setCode(StatusCodeEnum.MISS_REQUIRED_PARAMS.getCode());
             bean.setMessage(ex.getMessage());
             return bean;
-        } else if (ex instanceof RuntimeException) {
-            bean.setCode(StatusCodeEnum.ERROR.getCode());
-            bean.setMessage(ex.getMessage());
-            return bean;
-        }else if (ex instanceof HttpRequestMethodNotSupportedException) {
+        } else if (ex instanceof HttpRequestMethodNotSupportedException) {
             bean.setCode(StatusCodeEnum.ERROR.getCode());
             bean.setMessage("不支持该请求方式！");
             return bean;
         }else if (ex instanceof HttpMediaTypeNotSupportedException) {
             bean.setCode(StatusCodeEnum.ERROR.getCode());
             bean.setMessage("不支持该请求参数类型！");
+            return bean;
+        }else if (ex instanceof BizException) {
+            bean.setCode(  ((BizException)ex).getErrCode());
+            bean.setMessage( ((BizException)ex).getErrMsg());
+            return bean;
+        }else if (ex instanceof RuntimeException) {
+            bean.setCode(StatusCodeEnum.ERROR.getCode());
+            bean.setMessage(ex.getMessage());
             return bean;
         }
         else {

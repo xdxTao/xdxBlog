@@ -2,7 +2,7 @@
     <a-modal
         v-model="visible"
         :title="mode === 'add' ? '添加角色':'修改角色'"
-        width="560px"
+        width="540px"
         @cancel="cancelAddUser"
         @ok="addFormSubmit"
         ok-text="确定"
@@ -11,9 +11,9 @@
         :destroyOnClose="true"
         :confirm-loading="confirmLoading"
     >
-        <a-form-model ref="form" :model="form" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+        <a-form-model ref="form" :model="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
             <a-form-model-item label="角色名" prop="name" :rules="[{ required: true, message: '请输入必填项!' }]">
-                <a-input placeholder="请输入角色名" v-model="form.name"  style="width: 200px"></a-input>
+                <a-input placeholder="请输入角色名" v-model="form.name"></a-input>
             </a-form-model-item>
         </a-form-model>
     </a-modal>

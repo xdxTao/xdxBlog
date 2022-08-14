@@ -1,5 +1,6 @@
 package com.xdx97.blog.bean.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.xdx97.blog.common.enums.ArticleTypeEnum;
 import com.xdx97.blog.common.enums.YesOrNoEnum;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 /**
  * 文章VO
@@ -32,6 +35,11 @@ public class ArticleListVO {
     private Integer catgId;
 
     /**
+     * 分类名称
+     */
+    private String catgName;
+
+    /**
      * 文章标题
      */
     private String title;
@@ -44,12 +52,12 @@ public class ArticleListVO {
     /**
      * 文章类型(ORIGINAL 原创, REPRINT 转载), TRANSLATE 翻译)
      */
-    private ArticleTypeEnum type;
+    private String typeName;
 
     /**
-     * 是否草稿（YES是 NO否）
+     * 是否草稿（是 否）
      */
-    private YesOrNoEnum draft;
+    private String draftName;
 
     /**
      * 是否置顶（YES是 NO否）
@@ -60,4 +68,16 @@ public class ArticleListVO {
      * 是否公开（YES是 NO否）
      */
     private YesOrNoEnum open;
+
+    /**
+     * 创建时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createAt;
+
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateAt;
 }

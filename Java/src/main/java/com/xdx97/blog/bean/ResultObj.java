@@ -48,6 +48,14 @@ public class ResultObj<T> {
                 .build();
     }
 
+    public static ResultObj fail(StatusCodeEnum statusCodeEnum) {
+
+        return ResultObj.builder()
+                .code(statusCodeEnum.getCode())
+                .message(statusCodeEnum.getName())
+                .build();
+    }
+
 
 
 

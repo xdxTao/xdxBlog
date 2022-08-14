@@ -24,6 +24,11 @@ public class InformationVO {
     /**
      * 姓名
      */
+    private Integer id;
+
+    /**
+     * 姓名
+     */
     private String name;
 
     /**

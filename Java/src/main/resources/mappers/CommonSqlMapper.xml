@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdx97.blog.mapper.CommonSqlMapper">
+
+    <select id="parentId" resultType="java.lang.Integer">
+        <!-- 理论上是可以把表名当参数的，不知道为何这里不行 -->
+        <choose>
+            <when test="table != null and table == 'xdx_article_catg'">
+                SELECT parent_id FROM xdx_article_catg WHERE id = #{id}
+            </when>
+            <otherwise> </otherwise>
+        </choose>
+    </select>
+</mapper>

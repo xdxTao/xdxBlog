@@ -1,5 +1,12 @@
 package com.xdx97.blog.service.impl;
 
+import cn.hutool.core.lang.UUID;
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
+import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
+import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xdx97.blog.bean.ResultObj;
@@ -9,6 +16,7 @@ import com.xdx97.blog.bean.query.UserQuery;
 import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.bean.vo.MenuVO;
 import com.xdx97.blog.bean.vo.UserVO;
+import com.xdx97.blog.common.constant.SystemConstant;
 import com.xdx97.blog.common.enums.StatusEnum;
 import com.xdx97.blog.mapper.MenuMapper;
 import com.xdx97.blog.mapper.RoleMenuRelationMapper;
@@ -31,10 +39,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private RoleMenuRelationMapper roleMenuRelationMapper;
 
     @Override
-    public ResultObj information() {
+    public ResultObj information(Integer id) {
 
         // TODO 获取当前用户的id
-        int curId = 1;
+        int curId = id;
         InformationVO informationVO = this.baseMapper.getInformationById(curId);
 
         List<MenuVO> list = roleMenuRelationMapper.getRoleMenuByRoleId(informationVO.getRoleId());
@@ -42,7 +50,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         for (MenuVO item : list) {
             List<MenuVO> collect = list.stream()
                     .filter(iten -> item.getId().equals(iten.getParentId()))
-                    .sorted((a, b) -> a.getSort().compareTo(b.getSort()))
+                    .sorted((a, b) -> b.getSort().compareTo(a.getSort()))
                     .collect(Collectors.toList());
             item.setChildren(collect);
             tmpList.addAll(collect);
@@ -55,14 +63,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public ResultObj add(User user) {
+        String salt = UUID.randomUUID().toString();
+        Digester md5 = new Digester(DigestAlgorithm.MD5);
         user.setCreateAt(LocalDateTime.now())
             .setCreateBy(1)
-            .setSalt("dasd")
-            .setPassword("dasda")
-            .setStatus(StatusEnum.ENABLE);
+            .setSalt(salt)
+            .setStatus(StatusEnum.ENABLE)
+            .setPassword(md5.digestHex(user.getPassword() + salt));
 
         this.baseMapper.insert(user);
-
         return ResultObj.success();
     }
 

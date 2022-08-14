@@ -3,6 +3,7 @@ package com.xdx97.blog.controller;
 import cn.hutool.core.lang.Assert;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.dto.ArticleDTO;
+import com.xdx97.blog.bean.dto.FastArticleDTO;
 import com.xdx97.blog.bean.query.ArticleQuery;
 import com.xdx97.blog.bean.vo.ArticleVO;
 import com.xdx97.blog.service.ArticleService;
@@ -28,7 +29,7 @@ public class ArticleController {
      * 新增
      */
     @PostMapping("/add")
-    public ResultObj add(@RequestBody @Valid ArticleDTO articleDTO) {
+    public ResultObj add(@RequestBody  ArticleDTO articleDTO) {
         return articleService.add(articleDTO);
     }
 
@@ -36,9 +37,17 @@ public class ArticleController {
      * 更新
      */
     @PostMapping("/modify")
-    public ResultObj modify(@RequestBody @Valid ArticleDTO articleDTO) {
+    public ResultObj modify(@RequestBody  ArticleDTO articleDTO) {
         Assert.notNull(articleDTO.getId() ,"缺少必要参数ID");
         return articleService.modify(articleDTO);
+    }
+
+    /**
+     * 快速更新
+     */
+    @PostMapping("/fastModify")
+    public ResultObj fastModify(@RequestBody @Valid FastArticleDTO fastArticleDTO) {
+        return articleService.fastModify(fastArticleDTO);
     }
 
     /**

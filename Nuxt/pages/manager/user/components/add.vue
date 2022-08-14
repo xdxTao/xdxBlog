@@ -2,7 +2,7 @@
     <a-modal
         v-model="visible"
         :title="mode === 'add' ? '添加用户':'修改用户'"
-        width="560px"
+        width="540px"
         @cancel="cancelAddUser"
         @ok="addFormSubmit"
         ok-text="确定"
@@ -12,14 +12,13 @@
         :confirm-loading="confirmLoading"
     >
     <!-- ="dialog" -->
-        <a-form-model ref="form" :model="form" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+        <a-form-model ref="form" :model="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
             <a-form-model-item label="用户名" prop="name" :rules="[{ required: true, message: '请输入必填项!' }]">
-                <a-input placeholder="请输入用户名" v-model="form.name"  style="width: 200px"></a-input>
+                <a-input placeholder="请输入用户名" v-model="form.name" ></a-input>
             </a-form-model-item>
             <a-form-model-item label="所属角色" prop="roleId" :rules="[{ required: true, message: '请输入必填项!' }]">
                 <a-select
                     placeholder="请选择所属角色"
-                    style="width: 200px"
                     :filter-option="filterOption"
                     v-model="form.roleId"
                     @change="roleChange"

@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 文章VO
@@ -31,6 +32,11 @@ public class ArticleVO {
     private Integer catgId;
 
     /**
+     * 分类ids
+     */
+    private List<Integer> catgIds;
+
+    /**
      * 文章标题
      */
     private String title;
@@ -39,6 +45,11 @@ public class ArticleVO {
      * 文章标签
      */
     private String label;
+
+    /**
+     * 文章标签s
+     */
+    private List<String> labels;
 
     /**
      * 文章类型(ORIGINAL 原创, REPRINT 转载), TRANSLATE 翻译)

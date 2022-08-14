@@ -7,4 +7,6 @@ import lombok.Data;
 public class ArticleQuery extends Page {
 
     private String name;
+
+    private Integer catgId;
 }

@@ -73,7 +73,13 @@ export default {
             ],
             loading:false,
             columns: [
-                {title:'用户ID',dataIndex:'id'},
+                {
+                    title: '序号',
+                    dataIndex: 'indexs',
+                    key: 'indexs',
+                    width: '10%',
+                },
+                // {title:'用户ID',dataIndex:'id'},
                 {title:'用户名称',dataIndex:'name'},
                 {title:'所属角色',dataIndex:'roleName'},
                 {title:'状态',dataIndex:'status',
@@ -104,21 +110,22 @@ export default {
             let param ={current: this.current,size: this.pageSize}
              const result = await userList(param);
              if(result){
+                this.total= result.data.total
+                result.data.records.map((item,index) => {
+                    if (item.status == "ENABLE"){
+                        item.statusEd = true
+                    }
+                    if (item.status == "DISABLE"){
+                        item.statusEd = false
+                    }
+                    item.indexs = index + 1;
+                })
                 this.$set(this, 'UserListData',result.data.records);
              }else{
                  this.$set(this, 'UserListData',[]);
              }
             //  this.$set(this,'pagination',{total:result.data.total})
             // this.pagination.total= result.data.total
-            this.total= result.data.total
-            result.data.records.map(item => {
-                if (item.status == "ENABLE"){
-                    item.statusEd = true
-                }
-                if (item.status == "DISABLE"){
-                    item.statusEd = false
-                }
-            })
              this.$set(this,'loading',false)
         },
         /**

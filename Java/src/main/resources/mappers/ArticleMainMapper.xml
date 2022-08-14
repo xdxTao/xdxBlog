@@ -4,7 +4,19 @@
 
     <select id="list" resultType="com.xdx97.blog.bean.vo.ArticleListVO">
         SELECT
-            xam.*
+            xam.*,
+            xam.type typeName,
+            xam.draft draftName,
+            xac.name catgName
         FROM xdx_article_main xam
+        LEFT JOIN xdx_article_catg xac ON xam.catg_id = xac.id
+        WHERE 1 = 1
+        <if test="query.name != null and query.name != ''">
+            AND xam.title LIKE CONCAT('%',#{query.name},'%')
+        </if>
+        <if test="query.catgId != null">
+            AND xam.catg_id = #{query.catgId}
+        </if>
+        ORDER BY xam.create_at DESC
     </select>
 </mapper>

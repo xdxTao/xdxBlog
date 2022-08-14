@@ -8,20 +8,23 @@
 
     <select id="listByParentId" resultType="com.xdx97.blog.bean.vo.ArticleCatgVO">
         SELECT
-            id,
-            parent_id,
-            name,
-            status,
-            sort
-        FROM xdx_article_catg
+            xac.id,
+            xac.parent_id,
+            xac.name,
+            xac.status,
+            xac.sort,
+            IFNULL(COUNT(xam.id), 0) articleCount
+        FROM xdx_article_catg xac
+        LEFT JOIN xdx_article_main xam ON xac.id = xam.catg_id
         WHERE 1 = 1
-        AND parent_id = #{parentId}
+        AND xac.parent_id = #{parentId}
         <if test="query.name != null and query.name != ''">
-            AND name LIKE CONCAT('%',#{query.name},'%')
+            AND xac.name LIKE CONCAT('%',#{query.name},'%')
         </if>
         <if test="query != null and query.status != null">
-            AND status = #{query.status.code}
+            AND xac.status = #{query.status.code}
         </if>
-        ORDER BY sort DESC
+        GROUP BY xac.id
+        ORDER BY xac.sort DESC
     </select>
 </mapper>

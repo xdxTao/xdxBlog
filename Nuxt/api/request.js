@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import axios from 'axios' //引用axios  
 // create an axios instance 
 const service = axios.create({
-    baseURL: 'http://192.168.2.5:8888/xdx/',
+    baseURL: 'http://127.0.0.1:8888/xdx/',
     // nginx转发到后端Springboot 
     withCredentials: true,
     // send cookies when cross-domain requests 

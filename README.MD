@@ -21,7 +21,9 @@
 
 博客样子大概会如此：https://www.xdx97.com/
 
-接口文档：https://console-docs.apipost.cn/preview/e02ff94ddee9ceec/65c1c8ee36ddc6b2
+接口文档：https://console-docs.apipost.cn/preview/0e4060f7439480b6/cf222d9dd0c3c7ae
+
+B站地址：https://www.bilibili.com/video/BV1yd4y1Q7Vz
 
 <br/>
 
@@ -102,6 +104,13 @@
 
 如果对你有帮助可以关注我的微信公众号支持我：**小道仙97** 
 
+
+<br/>
+
+### 220814
+
+- 后台【文章管理】功能开发
+- 已知的问题修复和页面优化
 
 <br/>
 

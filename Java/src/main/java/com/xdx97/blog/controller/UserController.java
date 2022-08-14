@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.entity.User;
 import com.xdx97.blog.bean.query.UserQuery;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.common.enums.StatusCodeEnum;
 import com.xdx97.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,9 @@ public class UserController {
      * @return
      */
     @GetMapping("information")
-    public ResultObj information() {
-        return userService.information();
+    public ResultObj information(InformationVO informationVO) {
+//        return userService.information(informationVO.getId());
+        return userService.information(1);
     }
 
     @PostMapping("add")

@@ -2,7 +2,7 @@
     <a-modal
         v-model="visible"
         :title="mode === 'add' ? '添加分类':'修改分类'"
-        width="560px"
+        width="540px"
         @cancel="cancelAddUser"
         @ok="addFormSubmit"
         ok-text="确定"
@@ -12,14 +12,13 @@
         :confirm-loading="confirmLoading"
     >
     <!-- ="dialog" -->
-        <a-form-model ref="form" :model="form" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
-            <a-form-model-item label="分类名" prop="name" :rules="[{ required: true, message: '请输入必填项!' }]">
-                <a-input placeholder="请输入分类名" v-model="form.name"  style="width: 200px"></a-input>
+        <a-form-model ref="form" :model="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
+            <a-form-model-item label="分类名" prop="name" class="" :rules="[{ required: true, message: '请输入必填项!' }]">
+                <a-input placeholder="请输入分类名" v-model="form.name" ></a-input>
             </a-form-model-item>
-            <a-form-model-item label="所属分类" prop="parentId" :rules="[{ required: true, message: '请输入必填项!' }]">
+            <a-form-model-item label="所属分类" prop="parentId" >
                 <a-tree-select
                     placeholder="请选择所属分类"
-                    style="width: 200px"
                     :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
                     :filter-option="filterOption"
                     v-model="form.parentId"
@@ -30,7 +29,7 @@
                 </a-tree-select>
             </a-form-model-item>
             <a-form-model-item label="排序" prop="sort">
-                    <a-input-number v-model="form.sort" auto-complete="off" placeholder="请输入排序" :min="0" style="width: 200px" />
+                    <a-input-number v-model="form.sort" auto-complete="off" placeholder="请输入排序" :min="0" style="width: 100%"/>
                 </a-form-model-item>
             <a-form-model-item label="是否公开" prop="statusEd" >
                 <a-switch v-model="form.statusEd" @change="handleChangeShow" :checked="form.statusEd"/>
@@ -56,10 +55,10 @@ export default {
                 statusEd:true,
                 sort:'',
             },
-            rules: {
-                username: [{ required: true, message: '请输入用户名' }],
-                password: [{ required: true, message: '请输入密码!' }],
-            }
+            // rules: {
+            //     username: [{ required: true, message: '请输入用户名' }],
+            //     password: [{ required: true, message: '请输入密码!' }],
+            // }
         }
     },
     methods:{
@@ -188,3 +187,20 @@ export default {
     },
 }
 </script>
+<style lang="scss" scoped>
+.aaaa{
+    // border: 1px red solid;
+    .ant-form-item-control{
+        // border: 1px blue solid;
+        width: 100%;
+    }
+}
+.ant-modal-body{
+    .ant-form{
+        .ant-form-item-control{
+            // border: 1px blue solid;
+            width: 100%;
+        }
+    }
+}
+</style>

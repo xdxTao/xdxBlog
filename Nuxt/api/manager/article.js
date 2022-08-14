@@ -15,3 +15,28 @@ export function addCatg(params){
 export function modifyCatg(params){
     return http.post(`/article-catg/modify`,params)
 }
+
+// 新增文章
+export function addArticle(params){
+    return http.post(`/article/add`,params)
+}
+
+// 修改文章
+export function modifyArticle(params){
+    return http.post(`/article/modify`,params)
+}
+
+// 文章列表
+export function articleList(params){
+    return http.post(`/article/list`,params)
+}
+
+// 获取详情
+export function getarticleInfo(params){
+    return http.get(`/article/get/${params}`)
+}
+
+// 公开、置顶table修改
+export function fastModifyArticle(params){
+    return http.post(`/article/fastModify`,params)
+}

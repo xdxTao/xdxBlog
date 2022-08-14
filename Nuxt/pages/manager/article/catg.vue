@@ -16,6 +16,7 @@
                 :pagination="false"
                 @change="handleTableChange"
             >
+                
                 <div class="right-handle" slot="handle" slot-scope="text, row">
                     <a-button type="link" size="small" @click.stop="modifyCatg(row)">修改</a-button>                    
                 </div>
@@ -29,11 +30,10 @@
 <script>
 import { cloneDeep } from 'lodash';
 import {getCatgList } from '~/api/manager/article';
-import addCatg from './addCatg.vue'
-import AddCatg from './addCatg.vue';
+import addCatg from './addCatg.vue';
   export default {
     layout: 'manager',
-    components:{AddCatg },
+    components:{addCatg },
     data() {
         return {
             current:1,
@@ -53,25 +53,38 @@ import AddCatg from './addCatg.vue';
             ],
             columns:[
                 {
-                    title: '分类ID',
-                    dataIndex: 'id',
-                    key: 'id',
+                    title: '序号',
+                    dataIndex: 'indexs',
+                    key: 'indexs',
+                    width: '10%',
                 },
+                // {
+                //     title: '分类ID',
+                //     dataIndex: 'id',
+                //     key: 'id',
+                //     width: '20%',
+                // },
                 {
                     title: '分类名称',
                     dataIndex: 'name',
                     key: 'name',
+                    width: '20%',
+                },
+                {
+                    title: '文章数量',
+                    dataIndex: 'articleCount',
+                    key: 'articleCount',
                 },
                 {
                     title: '状态',
                     dataIndex: 'status',
                     key: 'age',
-                    width: '12%',
+                    width: '20%',
                     customRender: value => (value == 'ENABLE' ? '启用' : value == 'DISABLE'?'禁用' : '')
                 },
                 {
                     title: '操作',
-                    width: 130,
+                    width: '20%',
                     align: 'center',
                     dataIndex: 'handle',
                     scopedSlots: { customRender: 'handle' }
@@ -104,6 +117,9 @@ import AddCatg from './addCatg.vue';
         async getCatgList(){
             let param ={current: this.current,size: this.pageSize}
             const result = await getCatgList(param);
+            result.data.records.map((item,index) => {
+                    item.indexs = index + 1;
+                })
             this.$set(this, 'catgList',result.data.records);
             this.total = result.data.total
             this.$set(this,'loading',false)
@@ -161,7 +177,7 @@ import AddCatg from './addCatg.vue';
 </script>
 <style scoped lang="scss">
     .page-container{
-        border: 1px blue solid;
+        // border: 1px blue solid;
         // height: 100%;
         display: flex;
         flex-direction:row;

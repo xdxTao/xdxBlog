@@ -14,7 +14,7 @@ public interface UserService extends IService<User> {
      * 当前用户的信息
      * @return
      */
-    ResultObj information();
+    ResultObj information(Integer id);
 
     /**
      * 添加用户

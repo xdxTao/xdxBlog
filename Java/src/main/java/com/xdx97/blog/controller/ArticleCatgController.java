@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.entity.ArticleCatg;
 import com.xdx97.blog.bean.query.ArticleCatgQuery;
+import com.xdx97.blog.common.annotation.SkipLoginAuth;
 import com.xdx97.blog.common.enums.StatusCodeEnum;
 import com.xdx97.blog.service.ArticleCatgService;
 import org.springframework.beans.factory.annotation.Autowired;
