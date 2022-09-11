@@ -8,6 +8,8 @@ import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.entity.ArticleCatg;
 import com.xdx97.blog.bean.query.ArticleCatgQuery;
 import com.xdx97.blog.bean.vo.ArticleCatgVO;
+import com.xdx97.blog.bean.vo.InformationVO;
+import com.xdx97.blog.common.enums.StatusEnum;
 import com.xdx97.blog.mapper.ArticleCatgMapper;
 import com.xdx97.blog.service.ArticleCatgService;
 import org.springframework.stereotype.Service;
@@ -24,8 +26,16 @@ import java.time.LocalDateTime;
 public class ArticleCatgServiceImpl extends ServiceImpl<ArticleCatgMapper, ArticleCatg> implements ArticleCatgService {
 
     @Override
-    public ResultObj add(ArticleCatg articleCatg) {
-        articleCatg.setCreateAt(LocalDateTime.now()).setCreateBy(1);
+    public ResultObj frontList(ArticleCatgQuery articleCatgQuery) {
+        articleCatgQuery.setStatus(StatusEnum.ENABLE);
+        final ArticleCatgQuery query = ObjectUtil.clone(articleCatgQuery);
+        return ResultObj.success(getChild(baseMapper.listByParentId(0, query), articleCatgQuery));
+    }
+
+    @Override
+    public ResultObj add(ArticleCatg articleCatg, InformationVO informationVO) {
+        articleCatg.setCreateAt(LocalDateTime.now())
+                .setCreateBy(informationVO.getId());
         this.baseMapper.insert(articleCatg);
         return ResultObj.success();
     }
@@ -57,8 +67,9 @@ public class ArticleCatgServiceImpl extends ServiceImpl<ArticleCatgMapper, Artic
     }
 
     @Override
-    public ResultObj modify(ArticleCatg articleCatg) {
-
+    public ResultObj modify(ArticleCatg articleCatg, InformationVO informationVO) {
+        articleCatg.setCreateBy(informationVO.getId())
+                .setUpdateAt(LocalDateTime.now());
         this.baseMapper.updateById(articleCatg);
         return ResultObj.success();
     }

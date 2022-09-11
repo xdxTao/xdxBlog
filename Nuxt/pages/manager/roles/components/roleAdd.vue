@@ -37,7 +37,6 @@ export default {
             this.visible = false
         },
         addFormSubmit(){
-            console.log('xinz')
             this.confirmLoading = true
             if (this.isAddMode) {
                 this.add();

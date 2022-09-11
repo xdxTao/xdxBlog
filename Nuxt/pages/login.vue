@@ -17,7 +17,7 @@
                     <a-input class="input" 
                     placeholder="请输入账号..." 
                     v-decorator="[
-                    'account',
+                    'username',
                     {rules: [{ required: true, message: '请输入账号！' }]}
                     ]"
                     />
@@ -41,6 +41,8 @@
 </template>
 
 <script >
+import {loginIn } from '~/api/manager/login.js';
+
 export default{
     layout: 'block',
     data () {
@@ -49,16 +51,19 @@ export default{
         };
     },
     methods: {
-        submit() { // 提交表单
-            this.form.validateFields((err, values) => {
+         submit() { // 提交表单
+            this.form.validateFields(async (err, values) => {
                 if (!err) {
                     let val = this.form.getFieldsValue();
-                    this.$axios.post("user/login", val)
-                    .then((res) => { 
-                        this.$store.commit('setToken',res.token) 
-                        window.localStorage.setItem("storeState",JSON.stringify(this.$store.state))
-                        this.$router.push('/')
-                    })
+                    // this.$axios.post("user/login", val)
+                    // .then((res) => { 
+                    //     this.$store.commit('setToken',res.token) 
+                    //     window.localStorage.setItem("storeState",JSON.stringify(this.$store.state))
+                    //     this.$router.push('/manager')
+                    // })
+                    const result = await loginIn(val);
+                    window.localStorage.setItem('token',result.data);
+                    this.$router.push('/manager');
                 }
             });
         },
@@ -72,7 +77,7 @@ export default{
         height: 400px;
         display: flex;
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 50%;
         transform: translateX(-46%) translateY(-50%);
         box-shadow: 0 0 30px #e5e5e5;

@@ -6,6 +6,7 @@ import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.dto.SortDTO;
 import com.xdx97.blog.bean.entity.Menu;
 import com.xdx97.blog.bean.query.MenuQuery;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.bean.vo.MenuVO;
 import com.xdx97.blog.common.enums.StatusEnum;
 import com.xdx97.blog.mapper.MenuMapper;
@@ -31,11 +32,12 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     private MenuMapper menuMapper;
 
     @Override
-    public ResultObj add(Menu menu) {
+    public ResultObj add(Menu menu, InformationVO informationVO) {
         Menu one = this.lambdaQuery().eq(Menu::getName, menu.getName()).one();
         Assert.isNull(one,"当前名称已存在");
 
-        menu.setCreateAt(LocalDateTime.now()).setCreateBy(1);
+        menu.setCreateAt(LocalDateTime.now())
+                .setCreateBy(informationVO.getId());
         int insert = menuMapper.insert(menu);
         return ResultObj.success();
     }
@@ -63,8 +65,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
 
     @Override
-    public ResultObj modify(Menu menu) {
-
+    public ResultObj modify(Menu menu, InformationVO informationVO) {
+        menu.setUpdateAt(LocalDateTime.now())
+                .setUpdateBy(informationVO.getId());
         this.menuMapper.updateById(menu);
         return ResultObj.success();
     }

@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.entity.ArticleCatg;
 import com.xdx97.blog.bean.query.ArticleCatgQuery;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.common.annotation.SkipLoginAuth;
 import com.xdx97.blog.common.enums.StatusCodeEnum;
 import com.xdx97.blog.service.ArticleCatgService;
@@ -28,13 +29,25 @@ public class ArticleCatgController {
     @Autowired
     private ArticleCatgService articleCatgService;
 
+
+    /**
+     * 前台-文章分类列表
+     */
+    @PostMapping("/front/list")
+    public ResultObj frontList(@RequestBody ArticleCatgQuery articleCatgQuery) {
+
+        return articleCatgService.frontList(articleCatgQuery);
+    }
+
+    /***********************************************************后端***************************************************************/
+
     /**
      * 添加文章分类
      */
     @PostMapping("/add")
-    public ResultObj add(@Valid @RequestBody ArticleCatg articleCatg) {
+    public ResultObj add(@Valid @RequestBody ArticleCatg articleCatg, InformationVO informationVO) {
 
-        return articleCatgService.add(articleCatg);
+        return articleCatgService.add(articleCatg, informationVO);
     }
 
     /**
@@ -50,9 +63,9 @@ public class ArticleCatgController {
      * 分类更新
      */
     @PostMapping("/modify")
-    public ResultObj modify(@RequestBody ArticleCatg articleCatg) {
+    public ResultObj modify(@RequestBody ArticleCatg articleCatg, InformationVO informationVO) {
         Assert.notNull(articleCatg.getId(), StatusCodeEnum.MISS_REQUIRED_PARAMS.getName() +":ID");
-        return articleCatgService.modify(articleCatg);
+        return articleCatgService.modify(articleCatg, informationVO);
     }
 
 

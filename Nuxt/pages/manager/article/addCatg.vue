@@ -111,11 +111,11 @@ export default {
                 if (valid) {
                   const result = await addCatg(this.form);
                   if (result.code == 200){
-                    this.confirmLoading = false
                     this.cancelAddUser()
                     this.$message.success('添加分类成功！');
                     this.$emit('success');
-                  }                    
+                  }
+                  this.confirmLoading = false                    
                 }
             });
         },
@@ -128,11 +128,11 @@ export default {
                 if (valid) {
                     const result = await modifyCatg(this.form);
                     if (result.code == 200){
-                        this.confirmLoading = false
                         this.cancelAddUser()
                         this.$message.success('修改分类成功！');
                         this.$emit('success');
                     }
+                    this.confirmLoading = false
                     // this.reset();
                 }
             });

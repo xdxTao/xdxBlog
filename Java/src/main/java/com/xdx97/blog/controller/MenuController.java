@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.entity.Menu;
 import com.xdx97.blog.bean.query.MenuQuery;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.common.enums.StatusCodeEnum;
 import com.xdx97.blog.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class MenuController {
      * 添加菜单
      */
     @PostMapping("/add")
-    public ResultObj add(@Valid @RequestBody Menu menu) {
+    public ResultObj add(@Valid @RequestBody Menu menu, InformationVO informationVO) {
 
-        return menuService.add(menu);
+        return menuService.add(menu, informationVO);
     }
 
     /**
@@ -49,9 +50,9 @@ public class MenuController {
      * 改变状态
      */
     @PostMapping("/modify")
-    public ResultObj modify(@RequestBody Menu menu) {
+    public ResultObj modify(@RequestBody Menu menu, InformationVO informationVO) {
         Assert.notNull(menu.getId(), StatusCodeEnum.MISS_REQUIRED_PARAMS.getName() +":ID");
-        return menuService.modify(menu);
+        return menuService.modify(menu, informationVO);
     }
 
 }

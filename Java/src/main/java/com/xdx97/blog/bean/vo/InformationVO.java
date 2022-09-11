@@ -22,7 +22,7 @@ import java.util.List;
 public class InformationVO {
 
     /**
-     * 姓名
+     * id
      */
     private Integer id;
 

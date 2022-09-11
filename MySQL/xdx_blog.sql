@@ -11,7 +11,7 @@
  Target Server Version : 50711
  File Encoding         : 65001
 
- Date: 14/08/2022 17:04:25
+ Date: 11/09/2022 15:21:38
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `xdx_article_catg`  (
   `update_at` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `update_by` int(11) NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '文章分类表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '文章分类表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of xdx_article_catg
@@ -42,6 +42,8 @@ INSERT INTO `xdx_article_catg` VALUES (11, 10, 'Java中级', 'ENABLE', 1, '2022-
 INSERT INTO `xdx_article_catg` VALUES (12, 0, '数据库', 'ENABLE', 1, '2022-08-07 22:37:21', 1, NULL, NULL);
 INSERT INTO `xdx_article_catg` VALUES (13, 1, 'ss', 'ENABLE', 0, '2022-08-13 16:29:19', 1, NULL, NULL);
 INSERT INTO `xdx_article_catg` VALUES (14, 12, '测试', 'ENABLE', 2, '2022-08-14 16:59:06', 1, NULL, NULL);
+INSERT INTO `xdx_article_catg` VALUES (15, 14, '312312', 'ENABLE', 1, '2022-08-14 17:18:32', 1, NULL, NULL);
+INSERT INTO `xdx_article_catg` VALUES (16, 0, 'MQ', 'ENABLE', 0, '2022-09-05 09:45:20', 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for xdx_article_detail
@@ -87,7 +89,7 @@ INSERT INTO `xdx_article_detail` VALUES (35, 35, '<p>想吃v</p>\n', '想吃v', 
 INSERT INTO `xdx_article_detail` VALUES (36, 36, '<p>新增z</p>\n', '新增z', '2022-08-13 21:03:25', 1, '2022-08-13 21:03:37', 1);
 INSERT INTO `xdx_article_detail` VALUES (37, 37, '<p>asdasd</p>\n', 'asdasd', '2022-08-13 22:16:35', 1, '2022-08-13 22:16:38', 1);
 INSERT INTO `xdx_article_detail` VALUES (38, 38, '<p>vc</p>\n', 'vc', '2022-08-14 11:20:40', 1, NULL, NULL);
-INSERT INTO `xdx_article_detail` VALUES (39, 39, '<h2><a id=\"_0\"></a>一</h2>\n<p>这事第一段</p>\n<br />\n<h2><a id=\"_5\"></a>二</h2>\n<p><code>这事第二段</code></p>\n', '## 一\n这事第一段\n\n<BR/>\n\n## 二\n\n`这事第二段`\n\n', '2022-08-14 16:58:24', 1, '2022-08-14 16:58:49', 1);
+INSERT INTO `xdx_article_detail` VALUES (39, 39, '<h2><a id=\"_0\"></a>一</h2>\n<p>这事第一段</p>\n<br />\n<h2><a id=\"_5\"></a>二</h2>\n<p><code>这事第二段</code></p>\n', '## 一\n这事第一段\n\n<BR/>\n\n## 二\n\n`这事第二段`\n\n', '2022-08-14 16:58:24', 1, '2022-08-14 17:18:05', 1);
 
 -- ----------------------------
 -- Table structure for xdx_article_main
@@ -140,7 +142,7 @@ INSERT INTO `xdx_article_main` VALUES (35, '想吃 ', 'ddddd', 0, 0, 12, '1,', '
 INSERT INTO `xdx_article_main` VALUES (36, '新增', 'dddddd', 0, 0, 12, '123,', 'ORIGINAL', 'NO', 'YES', 'YES', '2022-08-13 21:03:25', 1, '2022-08-13 21:03:37', 1);
 INSERT INTO `xdx_article_main` VALUES (37, 'dasdv', 'dddddd', 0, 0, 12, '2131,', 'ORIGINAL', 'YES', 'YES', 'YES', '2022-08-13 22:16:35', 1, '2022-08-13 22:16:38', 1);
 INSERT INTO `xdx_article_main` VALUES (38, '现场v', 'ddddd', 0, 0, NULL, '', 'ORIGINAL', 'YES', 'YES', 'YES', '2022-08-14 11:20:40', 1, '2022-08-14 11:20:40', NULL);
-INSERT INTO `xdx_article_main` VALUES (39, '测试写文章22、8、4222222', 'dddddd', 0, 0, 11, '测试,222,', 'ORIGINAL', 'NO', 'YES', 'YES', '2022-08-14 16:58:24', 1, '2022-08-14 16:58:49', 1);
+INSERT INTO `xdx_article_main` VALUES (39, '测试写文章22、8、4222222手动发发稿费地方广泛的的法国队会感到翻跟斗乳房个人观点土豆粉更多如果土地给对方更多如果发都让狗日的风格广泛大概如果让他给任何一条入户阳台借天涯让他hurt发红包', 'dddddd', 0, 0, 11, '测试,222,', 'ORIGINAL', 'NO', 'YES', 'YES', '2022-08-14 16:58:24', 1, '2022-08-14 17:18:05', 1);
 
 -- ----------------------------
 -- Table structure for xdx_menu
@@ -220,28 +222,27 @@ CREATE TABLE `xdx_role_menu_relation`  (
   `update_at` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `update_by` int(11) NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 202 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色菜单关联' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 217 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色菜单关联' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of xdx_role_menu_relation
 -- ----------------------------
 INSERT INTO `xdx_role_menu_relation` VALUES (185, 4, 48, '2022-07-16 22:52:50', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (186, 1, 47, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (187, 1, 40, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (188, 1, 48, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (189, 1, 50, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (190, 1, 38, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (191, 1, 44, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (192, 1, 45, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (193, 1, 46, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (194, 1, 49, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (195, 1, 51, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (196, 1, 52, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (197, 1, 53, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (198, 1, 54, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (199, 1, 55, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (200, 1, 56, '2022-07-17 17:38:38', 1, NULL, NULL);
-INSERT INTO `xdx_role_menu_relation` VALUES (201, 1, 57, '2022-07-17 17:38:38', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (202, 1, 47, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (203, 1, 40, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (204, 1, 50, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (205, 1, 48, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (206, 1, 38, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (207, 1, 44, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (208, 1, 45, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (209, 1, 46, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (210, 1, 49, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (211, 1, 51, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (212, 1, 52, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (213, 1, 53, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (214, 1, 54, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (215, 1, 55, '2022-09-05 10:18:19', 1, NULL, NULL);
+INSERT INTO `xdx_role_menu_relation` VALUES (216, 1, 56, '2022-09-05 10:18:19', 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for xdx_user
@@ -259,11 +260,13 @@ CREATE TABLE `xdx_user`  (
   `update_at` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `update_by` int(11) NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of xdx_user
 -- ----------------------------
 INSERT INTO `xdx_user` VALUES (1, '超级管理员', 1, 'ENABLE', 'be8c2350-01d2-4406-a2d1-53f93fe06bd8', '61267d3f0dc9628853cadc06577a455e', '2022-03-26 20:38:52', 1, NULL, NULL);
+INSERT INTO `xdx_user` VALUES (2, '小道仙', 1, 'ENABLE', '59c9d75b-6bd6-4c09-9bf8-66a2d2f5a74c', '247a8bd3dc161f7c5924a986c643ada4', '2022-09-01 23:01:21', 1, '2022-09-11 12:28:33', 1);
+INSERT INTO `xdx_user` VALUES (3, '超级管理员2', 1, 'ENABLE', '8973cd08-482e-4a35-a869-b8f9b3960d33', 'b8a81ef58fc68c14e259f4588a499ff9', '2022-09-05 09:37:13', 1, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

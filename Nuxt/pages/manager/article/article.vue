@@ -19,7 +19,7 @@
             <!-- <div class="table-top-handle-wrapper">
                 <a-button type="primary" @click="addUser" icon="plus">添加</a-button>
             </div> -->
-            <a-table class="tableDiv " 
+            <a-table class="tableDiv" 
                 :footerOption="{ detailOption: false }" 
                 :columns="columns" 
                 :dataSource="ArticleListData" 
@@ -30,7 +30,7 @@
                 @change="handleTableChange"
                 >
                 <template slot="titled" slot-scope="text, row">
-                    <a-tooltip slot="titled" :title="row.title"> 
+                    <a-tooltip slot="titled" :title="row.title" placement="topLeft"> 
                         {{row.title}}
                     </a-tooltip>
                     
@@ -71,11 +71,11 @@ export default {
     layout: 'manager',
     data(){
         return{
-            // pagination:{
-            //     current:1,
-            //     pageSize:10,
-            //     total:0
-            // },
+            pagination:{
+                current:1,
+                pageSize:10,
+                total:0
+            },
             search:{
                 catgIdList:[],
                 catgId:'',
@@ -107,24 +107,26 @@ export default {
                     title: '序号',
                     dataIndex: 'indexs',
                     key: 'indexs',
-                    width: '5%',
+                    width: 60,
                 },
-                {title:'文章标题',dataIndex:'title', scopedSlots: { customRender: 'titled' },width: 200,ellipsis: true,},
-                {title:'文章分类',dataIndex:'catgName', ellipsis: true,},
+                
+                {title:'文章标题',dataIndex:'title', scopedSlots: { customRender: 'titled' },width: 400,ellipsis: true,},
+                {title:'文章分类',dataIndex:'catgName', ellipsis: true,width: 100,},
                 {title:'文章类型',dataIndex:'typeName', scopedSlots: { customRender: 'typeName' }, align: "center"},
                 {title:'是否草稿',dataIndex:'draftName',width: 100,},
                 // {title:'是否草稿',dataIndex:'draft'},
-                {title:'是否置顶',dataIndex:'top', scopedSlots: { customRender: 'top' }, align: "center"},
-                {title:'是否公开',dataIndex:'open', scopedSlots: { customRender: 'open' }, align: "center"},
-                {title:'创建时间',dataIndex:'createAt'},
-                {title:'修改时间',dataIndex:'updateAt'},
+                {title:'是否置顶',dataIndex:'top', scopedSlots: { customRender: 'top' },width: 100,},
+                {title:'是否公开',dataIndex:'open', scopedSlots: { customRender: 'open' },width: 100},
+                {title:'创建时间',dataIndex:'createAt',width: 200},
+                // {title:'修改时间',dataIndex:'updateAt'},
                 {
                     title: '操作',
                     width: 130,
                     align: 'center',
                     dataIndex: 'handle',
                     scopedSlots: { customRender: 'handle' }
-                }
+                },
+                
 
             ],
             modifyUserDialog: false,
@@ -289,7 +291,7 @@ export default {
         display: flex;
         height: 100%;
         flex-direction:row;
-        padding: 10px 10px 10px 10px;
+        // padding: 10px 10px 10px 10px;
         // margin-left: 10px;
         .table-top-handle-wrapper{
             padding-bottom: 10px;
@@ -313,10 +315,16 @@ export default {
     width: 100%;
     
 }
-.antd-pagination{
-    position:fixed;
-    right:50px;
-    bottom:20px;
-}
+.ant-pagination, .ant-table-pagination{
+        position:fixed !important; 
+        right:50px !important;
+        bottom:20px !important;
+        // border: 1px red solid;
+    }
+// .antd-pagination{
+//     position:fixed;
+//     right:50px;
+//     bottom:20px;
+// }
 
 </style>

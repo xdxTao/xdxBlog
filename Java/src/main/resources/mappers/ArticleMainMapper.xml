@@ -2,6 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xdx97.blog.mapper.ArticleMainMapper">
 
+    <select id="frontList" resultType="com.xdx97.blog.bean.vo.ArticleFrontListVO">
+        SELECT
+            xam.*,
+            xam.type typeName,
+            xam.draft draftName,
+            xac.name catgName
+        FROM xdx_article_main xam
+        LEFT JOIN xdx_article_catg xac ON xam.catg_id = xac.id
+        WHERE xam.draft = 'NO'
+        AND xam.open = 'YES'
+        ORDER BY xam.top ASC ,xam.create_at DESC
+    </select>
+
+    <select id="readTop" resultType="java.util.Map">
+        SELECT
+            xam.id,
+            xam.title,
+            xam.read_count readCount
+        FROM xdx_article_main xam
+        WHERE xam.draft = 'NO'
+        AND xam.open = 'YES'
+        ORDER BY xam.read_count DESC
+        LIMIT 10
+    </select>
+
+
+    <select id="frontDetailById" resultType="com.xdx97.blog.bean.vo.ArticleFrontVO">
+        SELECT
+            xam.id,
+            xam.title,
+            xam.label,
+            xam.type,
+            xac.name catgName,
+            xad.markdown_context markdownContext
+        FROM xdx_article_main xam
+        LEFT JOIN xdx_article_catg xac ON xam.catg_id = xac.id
+        LEFT JOIN xdx_article_detail xad ON xam.id = xad.article_id
+        WHERE xam.id = #{id}
+    </select>
+
     <select id="list" resultType="com.xdx97.blog.bean.vo.ArticleListVO">
         SELECT
             xam.*,
@@ -19,4 +59,5 @@
         </if>
         ORDER BY xam.create_at DESC
     </select>
+
 </mapper>

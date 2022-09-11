@@ -33,6 +33,9 @@
                     </a-select-option>
                 </a-select>
             </a-form-model-item>
+            <a-form-model-item label="密码" prop="password" :rules="[{ required: true, message: '请输入必填项!' }]">
+                <a-input-password placeholder="请输入密码 " type="password" v-model="form.password"></a-input-password>
+            </a-form-model-item>
         </a-form-model>
         
     </a-modal>
@@ -64,7 +67,8 @@ export default {
             ],
             form:{
                 name: '',
-                roleId:''
+                roleId:'',
+                password:''
             },
             rules: {
                 username: [{ required: true, message: '请输入用户名' }],
@@ -110,7 +114,7 @@ export default {
         },
         reset() {
             Object.assign(this.form, {
-                password: '',
+                passWord   : '',
                 username: '',
                 userType: '',
                 name: '',

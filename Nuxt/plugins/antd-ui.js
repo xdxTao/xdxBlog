@@ -2,7 +2,7 @@ import Vue from 'vue'
 // import Antd from 'ant-design-vue/lib'
 import { Layout, Menu, Card,message, Tree, Tooltip, FormModel,Form, Empty, InputNumber, 
          Input, Switch, Button,Icon,Table,Modal, Select, Pagination, TreeSelect, Tag, Upload, 
-         Cascader, Radio  } from 'ant-design-vue/lib'
+         Cascader, Radio, Collapse,Popconfirm  } from 'ant-design-vue/lib'
 
 Vue.use(Menu)
 Vue.use(Layout)
@@ -26,6 +26,9 @@ Vue.use(Tag)
 Vue.use(Upload)
 Vue.use(Cascader) 
 Vue.use(Radio)
+Vue.use(Collapse)
+Vue.use(Popconfirm)
+
 
 
 Vue.prototype.$message = message;

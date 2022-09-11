@@ -5,6 +5,7 @@ import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.dto.SortDTO;
 import com.xdx97.blog.bean.entity.Menu;
 import com.xdx97.blog.bean.query.MenuQuery;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.common.enums.StatusEnum;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public interface MenuService extends IService<Menu> {
      * @param menu
      * @return
      */
-    ResultObj add(Menu menu);
+    ResultObj add(Menu menu, InformationVO informationVO);
 
     /**
      * 获取菜单列表
@@ -33,5 +34,5 @@ public interface MenuService extends IService<Menu> {
     /**
      * 修改接口
      */
-    ResultObj modify(Menu menu);
+    ResultObj modify(Menu menu, InformationVO informationVO);
 }

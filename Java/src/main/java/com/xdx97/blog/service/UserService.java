@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.entity.User;
 import com.xdx97.blog.bean.query.UserQuery;
+import com.xdx97.blog.bean.vo.InformationVO;
 
 /**
  * 用户
@@ -21,7 +22,7 @@ public interface UserService extends IService<User> {
      * @param user
      * @return
      */
-    ResultObj add(User user);
+    ResultObj add(User user, InformationVO informationVO);
 
     /**
      * 用户列表
@@ -35,7 +36,7 @@ public interface UserService extends IService<User> {
      * @param user
      * @return
      */
-    ResultObj modify(User user);
+    ResultObj modify(User user, InformationVO informationVO);
 
 
 

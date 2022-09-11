@@ -31,13 +31,13 @@ public class UserController {
      */
     @GetMapping("information")
     public ResultObj information(InformationVO informationVO) {
-//        return userService.information(informationVO.getId());
-        return userService.information(1);
+        return userService.information(informationVO.getId());
+//        return userService.information(1);
     }
 
     @PostMapping("add")
-    public ResultObj add(@Valid @RequestBody User user) {
-        return userService.add(user);
+    public ResultObj add(@Valid @RequestBody User user, InformationVO informationVO) {
+        return userService.add(user, informationVO);
     }
 
     /**
@@ -55,9 +55,9 @@ public class UserController {
      * @return
      */
     @PostMapping("modify")
-    public ResultObj modify(@RequestBody User user) {
+    public ResultObj modify(@RequestBody User user, InformationVO informationVO) {
         Assert.isFalse(user==null || user.getId() == null, StatusCodeEnum.MISS_REQUIRED_PARAMS.getName()+":ID");
-        return userService.modify(user);
+        return userService.modify(user, informationVO);
     }
 
 

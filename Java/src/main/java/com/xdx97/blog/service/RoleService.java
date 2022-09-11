@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.dto.RoleMenuDTO;
 import com.xdx97.blog.bean.entity.Role;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.bean.vo.RoleVO;
 
 import java.util.List;
@@ -21,14 +22,14 @@ public interface RoleService extends IService<Role> {
      * @param role
      * @return
      */
-    ResultObj add(Role role);
+    ResultObj add(Role role, InformationVO informationVO);
 
     /**
      * 角色菜单权限变更
      * @param roleMenu
      * @return
      */
-    ResultObj roleMenu(RoleMenuDTO roleMenu);
+    ResultObj roleMenu(RoleMenuDTO roleMenu, InformationVO informationVO);
 
     /**
      * 角色列表

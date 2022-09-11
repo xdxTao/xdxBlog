@@ -448,8 +448,8 @@ export default {
     display: flex;
     justify-content:center;
     // border: 1px blue solid;
-    padding-left: 10px;
-    padding-right: 10px;
+    // padding-left: 10px;
+    // padding-right: 10px;
     .mavonEditor {
         // width: 60%;
         height: 100%;
@@ -463,26 +463,29 @@ export default {
             z-index: 100;
             // border: 1px red solid;
             background-color: #f8f8f8;
+            line-height:60px;
             display: flex;
             justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 10px;
             .left{
                 width: 100%;
                 // padding-left: 20px;
-                height: 46px;
-                // margin-top: 8px;
+                // height: 46px;
                 // border: 3px black solid;
             }
             .center{
                 width: 180px;
-                height: 42px;
+                // height: 42px;
                 // margin-top: 8px;
                 // border: 1px blue solid;
                 text-align: center;
             }
             .right{
-                width: 260px;
-                height: 42px;
-                // margin-top: 10px;
+                width: 8%;
+                // height: 42px;
+                line-height:60px;
+                margin-top: 5px;
                 // border: 1px green solid;
                 display: flex;
                 flex-direction: row;
@@ -490,7 +493,7 @@ export default {
                     font-size: 35px;
                 }
                 .selectWidth{
-                    width: 120px;
+                    width: 80px;
                     margin-left: 15px;
                     margin-top: 4px;
                     text-align: center;

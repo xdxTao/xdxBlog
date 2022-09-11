@@ -4,11 +4,11 @@ import cn.hutool.core.lang.Assert;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.dto.RoleMenuDTO;
 import com.xdx97.blog.bean.entity.Role;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.bean.vo.RoleVO;
 import com.xdx97.blog.common.enums.StatusCodeEnum;
 import com.xdx97.blog.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,18 +31,18 @@ public class RoleController {
      * 添加角色
      */
     @PostMapping("/add")
-    public ResultObj add(@Valid @RequestBody Role role) {
+    public ResultObj add(@Valid @RequestBody Role role, InformationVO informationVO) {
 
-        return roleService.add(role);
+        return roleService.add(role, informationVO);
     }
 
     /**
      * 添加菜单权限
      */
     @PostMapping("/role-menu")
-    public ResultObj roleMenu(@Valid @RequestBody RoleMenuDTO roleMenu) {
+    public ResultObj roleMenu(@Valid @RequestBody RoleMenuDTO roleMenu, InformationVO informationVO) {
 
-        return roleService.roleMenu(roleMenu);
+        return roleService.roleMenu(roleMenu, informationVO);
     }
 
     /**

@@ -62,11 +62,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ResultObj add(User user) {
+    public ResultObj add(User user, InformationVO informationVO) {
         String salt = UUID.randomUUID().toString();
         Digester md5 = new Digester(DigestAlgorithm.MD5);
         user.setCreateAt(LocalDateTime.now())
-            .setCreateBy(1)
+            .setCreateBy(informationVO.getId())
             .setSalt(salt)
             .setStatus(StatusEnum.ENABLE)
             .setPassword(md5.digestHex(user.getPassword() + salt));
@@ -83,8 +83,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ResultObj modify(User user) {
-
+    public ResultObj modify(User user, InformationVO informationVO) {
+        String salt = UUID.randomUUID().toString();
+        Digester md5 = new Digester(DigestAlgorithm.MD5);
+        user.setUpdateBy(informationVO.getId())
+                .setUpdateAt(LocalDateTime.now())
+                .setSalt(salt)
+                .setStatus(StatusEnum.ENABLE)
+                .setPassword(md5.digestHex(user.getPassword() + salt));
         this.baseMapper.updateById(user);
         return ResultObj.success();
     }

@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-         <header class="header" />
+        <header class="header" />
 		<div class="navigation ">
 			<div class="left">
                 <div class>
@@ -8,6 +8,11 @@
                 </div>
             </div>
              <div class="right">
+				<ul>
+                     <nuxt-link to="/">
+                        <li @click="cur_menu = '/'" :class="cur_menu == '/' ? 'selection' : ''" >首页</li>
+                    </nuxt-link>
+                 </ul>
                  <ul>
                      <nuxt-link to="/manager">
                         <li @click="cur_menu = '/manager'" :class="cur_menu == '/manager' ? 'selection' : ''" >系统管理</li>
@@ -58,6 +63,7 @@ export default {
 <style lang="scss" scoped>
 	.container{
 		opacity: 0.7;
+		// border: 2px black solid;
 		// 导航栏的外框
 		width: 100%;
 		height: 50px;
@@ -105,6 +111,8 @@ export default {
 			.right {
 				width: 1050px;
 				// border: 1px green solid;
+				display: flex;
+				flex-direction: row;
 				// 选中样式
 				.selection { 
 					color: #5cacee;

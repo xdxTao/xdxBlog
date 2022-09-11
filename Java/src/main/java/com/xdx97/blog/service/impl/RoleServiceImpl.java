@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xdx97.blog.bean.ResultObj;
 import com.xdx97.blog.bean.dto.RoleMenuDTO;
 import com.xdx97.blog.bean.entity.Role;
+import com.xdx97.blog.bean.vo.InformationVO;
 import com.xdx97.blog.bean.vo.RoleVO;
 import com.xdx97.blog.common.enums.StatusEnum;
 import com.xdx97.blog.mapper.RoleMapper;
@@ -27,9 +28,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
 
     @Override
-    public ResultObj add(Role role) {
+    public ResultObj add(Role role, InformationVO informationVO) {
         role.setStatus(StatusEnum.ENABLE)
-                .setCreateBy(1)
+                .setCreateBy(informationVO.getId())
                 .setCreateAt(LocalDateTime.now());
         this.baseMapper.insert(role);
         return ResultObj.success();
@@ -37,7 +38,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     @Transactional
-    public ResultObj roleMenu(RoleMenuDTO roleMenu) {
+    public ResultObj roleMenu(RoleMenuDTO roleMenu, InformationVO informationVO) {
         this.baseMapper.deleteRoleMenuByRoleId(roleMenu.getRoleId());
         if ( !CollectionUtils.isEmpty(roleMenu.getMenuIds())) {
             this.baseMapper.updateRoleMenuByRoleId(roleMenu.getRoleId(), roleMenu.getMenuIds());

@@ -340,6 +340,7 @@ import {menuList, addMenu, modMenu } from '~/api/manager/menu.js';
     .page-container{
         // border: 1px blue solid;
         width: 100%;
+        height: 100%;
         display: flex;
         flex-direction:row;
     }

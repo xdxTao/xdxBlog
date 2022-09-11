@@ -199,7 +199,7 @@ export default {
         display: flex;
         height: 100%;
         flex-direction:row;
-        padding: 10px 10px 10px 10px;
+        // padding: 10px 10px 10px 10px;
         // margin-left: 10px;
         .table-top-handle-wrapper{
             padding-bottom: 10px;
